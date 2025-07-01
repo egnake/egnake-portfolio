@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Nedir?</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body data-theme="dark">
+    <div class="container">
+        <h1>XSS Nedir ve Nasıl Çalışır?</h1>
+        <p>Bu yazıda XSS açıkları, türleri ve nasıl korunabileceğiniz anlatılıyor...</p>
+    </div>
+</body>
+</html>
