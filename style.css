@@ -145,6 +145,11 @@ body {
         background-color: var(--card-bg);
         padding-top: 2rem;
         padding-bottom: 2rem;
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 999;
     }
 
     .desktop-nav ul.active {
@@ -153,6 +158,7 @@ body {
 
     .desktop-nav li {
         margin: 1rem 0;
+        text-align: center;
     }
 
     .desktop-nav li a {
@@ -168,29 +174,6 @@ body {
         width: 80%;
         bottom: 0;
     }
-
-.hamburger {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: var(--accent-color);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-}
-
-.hamburger:hover {
-    transform: rotate(90deg);
-}
-
-.mobile-menu.active {
-    display: block;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 /* Hero */
 .hero {
