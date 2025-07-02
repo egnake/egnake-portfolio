@@ -1,7 +1,7 @@
 // Mobil menü kontrolü
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.querySelector('.desktop-nav ul');
+    const mobileMenu = document.getElementById('mobileMenu');
 
     if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', () => {
@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-});
     // Scroll Animasyonları
     const sections = document.querySelectorAll(".section");
 
@@ -97,3 +96,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
         });
     }
+});
