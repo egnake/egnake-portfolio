@@ -1,4 +1,3 @@
-// Mobil menü kontrolü
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -17,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
     // Scroll Animasyonları
     const sections = document.querySelectorAll(".section");
 
