@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
             mobileMenu.classList.toggle('active');
         });
 
-        // Telefonlarda link tıklayınca menüyü kapat
+        // Telefonlarda link tıklayınca menü kapatılıyor
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -34,6 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
         section.style.transform = "translateY(30px)";
         section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
         observer.observe(section);
+    });
+
+    // Yetenek Kartları Hover Efekti
+    const skillCards = document.querySelectorAll(".skill-card");
+    skillCards.forEach(card => {
+        card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+        card.addEventListener("mouseenter", () => {
+            card.style.transform = "scale(1.02)";
+            card.style.boxShadow = "0 10px 20px var(--shadow-color)";
+        });
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "scale(1)";
+            card.style.boxShadow = "0 4px 10px var(--shadow-color)";
+        });
     });
 
     // GitHub Projeleri Yükleme
@@ -68,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // EmailJS Ayarları
     (function () {
-        emailjs.init("akystYw1ebv8iwdiZ");
+        emailjs.init("akystYw1ebv8iwdiZ"); // Buraya User ID’ni yaz
     })();
 
     const form = document.getElementById('contactForm');
