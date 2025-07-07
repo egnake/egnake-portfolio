@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (hamburger && mobileMenu) {
-        // Hamburger menü kontrolü
+        // Mobil menü açma/kapama
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
 
-        // Telefonlarda link tıklayınca menüyü kapat
+        // Telefonlarda link tıklanınca menüyü kapat
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // GitHub Projeleri Yükleme
     function loadGitHubRepos() {
         const container = document.getElementById('githubProjects');
-        fetch('https://api.github.com/users/egeparlak/repos ')
+        fetch('https://api.github.com/users/egnake/repos ')
             .then(res => res.json())
             .then(repos => {
                 container.innerHTML = '';
@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     card.innerHTML = `
                         <h3>${repo.name}</h3>
                         <p>${repo.description || 'Açıklama yok.'}</p>
-                        <a href="${repo.html_url}" target="_blank" class="read-more">GitHub'a Git →</a>
                     `;
                     container.appendChild(card);
                 });
@@ -69,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // EmailJS Ayarları
     (function () {
-        emailjs.init("akystYw1ebv8iwdiZ"); // Buraya User ID'ni yaz
+        emailjs.init("akystYw1ebv8iwdiZ");
     })();
 
     const form = document.getElementById('contactForm');
