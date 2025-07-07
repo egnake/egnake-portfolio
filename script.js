@@ -3,11 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (hamburger && mobileMenu) {
+        // Hamburger menü kontrolü
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
 
-        // Telefonlarda link tıklayınca menü kapatılıyor
+        // Telefonlarda link tıklayınca menüyü kapat
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -36,24 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(section);
     });
 
-    // Yetenek Kartları Hover Efekti
-    const skillCards = document.querySelectorAll(".skill-card");
-    skillCards.forEach(card => {
-        card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-        card.addEventListener("mouseenter", () => {
-            card.style.transform = "scale(1.02)";
-            card.style.boxShadow = "0 10px 20px var(--shadow-color)";
-        });
-        card.addEventListener("mouseleave", () => {
-            card.style.transform = "scale(1)";
-            card.style.boxShadow = "0 4px 10px var(--shadow-color)";
-        });
-    });
-
     // GitHub Projeleri Yükleme
     function loadGitHubRepos() {
         const container = document.getElementById('githubProjects');
-        fetch('https://api.github.com/users/egnake/repos ')
+        fetch('https://api.github.com/users/egeparlak/repos ')
             .then(res => res.json())
             .then(repos => {
                 container.innerHTML = '';
@@ -82,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // EmailJS Ayarları
     (function () {
-        emailjs.init("akystYw1ebv8iwdiZ"); // Buraya User ID’ni yaz
+        emailjs.init("akystYw1ebv8iwdiZ"); // Buraya User ID'ni yaz
     })();
 
     const form = document.getElementById('contactForm');
