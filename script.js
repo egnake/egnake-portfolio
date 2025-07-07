@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // GitHub Projeleri Yükleme
     function loadGitHubRepos() {
         const container = document.getElementById('githubProjects');
-        fetch('https://api.github.com/users/egeparlak/repos ')
+        fetch('https://api.github.com/users/egnake/repos ')
             .then(res => res.json())
             .then(repos => {
                 container.innerHTML = '';
