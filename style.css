@@ -332,6 +332,26 @@ a {
     transition: all 0.3s ease;
 }
 
+/* Lazy loading */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img.lazy-loaded {
+    opacity: 1;
+}
+
+/* Critical CSS */
+.hero-content {
+    will-change: transform;
+}
+
+/* Animasyon optimizasyonu */
+.skill-card {
+    will-change: transform;
+}
+
 .language-switcher button:hover {
     background: #444;
 }
@@ -433,3 +453,202 @@ a {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+/* Genel Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    background-color: #0d0d0d;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #141414;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ccc;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.desktop-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.desktop-nav li a {
+    position: relative;
+    font-weight: 500;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.desktop-nav li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #aaa;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.desktop-nav li a:hover::after,
+.desktop-nav li a.active::after {
+    width: 100%;
+}
+
+/* Hamburger Menü */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.hamburger-line {
+    width: 2rem;
+    height: 0.25rem;
+    background: #ccc;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    transform-origin: 1px;
+}
+
+.hamburger.active .hamburger-line:first-child {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:last-child {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .desktop-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #141414;
+        padding: 6rem 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 9;
+    }
+
+    .desktop-nav.active {
+        right: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .nav-links li {
+        margin: 0;
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        display: block;
+    }
+
+    .language-switcher {
+        margin: 1rem 0 0;
+        justify-content: center;
+    }
+}
+/* Link hover efektleri için */
+.nav-links li a {
+    display: inline-block;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-links li a:hover {
+    color: #fff;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Mobilde farklı davranış */
+@media (max-width: 768px) {
+    .nav-links li a::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .nav-links li a:hover::after {
+        width: 80%;
+    }
+}
+
+/* Diğer stiller aynı şekilde devam eder... */
