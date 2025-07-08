@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ege PARLAK | Siber Güvenlik Portfolyo</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.emailjs.com/dist/email.min.js "></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script defer src="script.js"></script>
 </head>
 <body data-theme="dark">
@@ -38,7 +38,7 @@
     <section id="about" class="section about-section">
         <div class="about-container">
             <div class="about-image">
-                <img src="images/profile.png" alt="Ege PARLAK" />
+                <img src="images/profile.png" alt="Ege PARLAK" class="profile-img" />
             </div>
             <div class="about-content">
                 <h2>Hakkımda</h2>
@@ -48,6 +48,16 @@
                 </p>
             </div>
         </div>
+    </section>
+
+    <!-- Web Güvenliği Kontrol Aracı -->
+    <section id="security-checker" class="section">
+      <h2>Web Güvenliği Kontrol Aracı</h2>
+      <div style="max-width:600px; margin:auto; text-align:center;">
+        <textarea id="securityInput" placeholder="Metninizi buraya girin..." rows="5" style="width:100%; padding:1rem; border-radius:8px; border:1px solid #555; background:#1a1a1a; color:#fff;"></textarea>
+        <button onclick="checkSecurity()" class="btn" style="margin-top:1rem;">Güvenlik Kontrolü Yap</button>
+        <p id="securityResult" style="margin-top:1rem; font-weight:bold;"></p>
+      </div>
     </section>
 
     <!-- Skills Section -->
@@ -91,15 +101,13 @@
         <h2>İletişim</h2>
         <div class="contact-info">
             <p>Email: <a href="mailto:egeparlak@example.com">egnakebusiness@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/egeparlak " target="_blank">github.com/egeparlak</a></p>
+            <p>GitHub: <a href="https://github.com/egeparlak" target="_blank">github.com/egeparlak</a></p>
         </div>
 
-        <!-- CV İndir Butonu -->
         <div class="cv-download">
             <a href="cv/Ege_PARLAK_CV.pdf" download class="btn">CV'mi İndir</a>
         </div>
 
-        <!-- İletişim Formu -->
         <form class="contact-form" id="contactForm">
             <input type="text" name="name" placeholder="Adınız" required />
             <input type="email" name="email" placeholder="E-mail Adresiniz" required />
@@ -113,6 +121,19 @@
     <footer class="footer">
         <p>&copy; 2025 Ege PARLAK. Tüm hakları saklıdır.</p>
     </footer>
+
+    <!-- Tawk.to Live Chat -->
+    <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function(){
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/686cb1a9db3b4f190a1f184d/default'; // ← BURAYI DEĞİŞTİR
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+    </script>
 
 </body>
 </html>
