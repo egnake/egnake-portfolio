@@ -7,26 +7,16 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script defer src="script.js"></script>
-    <meta name="description" content="Ege Parlak'ın siber güvenlik portfolyosu. Web güvenliği test araçları, eğitim kaynakları ve kişisel projeler.">
-<meta name="keywords" content="siber güvenlik, web güvenliği, penetration test, XSS, SQL Injection">
-<meta name="author" content="Ege Parlak">
-
-<!-- Schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ege Parlak",
-  "url": "https://egeparlak.com",
-  "jobTitle": "Siber Güvenlik Uzmanı",
-  "alumniOf": "Ufuk Üniversitesi"
-}
-</script>
 </head>
 <body data-theme="dark">
 
     <header class="navbar">
         <div class="logo"> <a href="https://www.instagram.com/egnake/">Ege PARLAK</a></div>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
         <nav class="desktop-nav">
             <ul class="nav-links" id="mobileMenu">
                 <li><a href="#about">Hakkımda</a></li>
@@ -37,7 +27,6 @@
                 <li><a href="webguvenlik.html">Web Güvenliği</a></li>
             </ul>
         </nav>
-        <button class="hamburger" id="hamburger">&#9776;</button>
     </header>
 
     <section class="hero">
@@ -51,7 +40,7 @@
     <section id="about" class="section about-section">
         <div class="about-container">
             <div class="about-image">
-                <img src="images/profile.png" alt="Ege PARLAK" class="profile-img" />
+                <img src="images/profile.png" alt="Ege PARLAK" class="profile-img" loading="lazy" />
             </div>
             <div class="about-content">
                 <h2>Hakkımda</h2>
@@ -119,18 +108,5 @@
     <footer class="footer">
         <p>&copy; 2025 Ege PARLAK. Tüm hakları saklıdır.</p>
     </footer>
-
-    <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function(){
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/686cb1a9db3b4f190a1f184d/default';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-    </script>
-
 </body>
 </html>
