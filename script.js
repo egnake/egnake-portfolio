@@ -1,23 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
+    const desktopNav = document.querySelector('.desktop-nav');
 
-    if (hamburger && mobileMenu) {
+    // Hamburger menü toggle
+    if (hamburger && mobileMenu && desktopNav) {
         hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
+            desktopNav.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
         });
 
+        // Menü linklerine tıklandığında menüyü kapat
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    mobileMenu.classList.remove('active');
                     hamburger.classList.remove('active');
+                    desktopNav.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
                 }
             });
         });
     }
-
     const sections = document.querySelectorAll(".section");
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
