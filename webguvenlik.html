@@ -10,69 +10,84 @@
 </head>
 <body data-theme="dark">
 
-  <header class="navbar">
-      <div class="logo"> <a href="https://www.instagram.com/egnake/">Ege PARLAK</a></div>
-      <nav class="desktop-nav">
-          <ul class="nav-links" id="mobileMenu">
-              <li><a href="index.html">Ana Sayfa</a></li>
-              <li><a href="#gamification">Güvenlik Oyunu</a></li>
-              <li><a href="#password-meter">Şifre Gücü</a></li>
-              <li><a href="#sql-injection">SQL Testi</a></li>
-          </ul>
-      </nav>
-      <button class="hamburger" id="hamburger">&#9776;</button>
-  </header>
+    <header class="navbar">
+        <div class="logo"> <a href="https://www.instagram.com/egnake/">Ege PARLAK</a></div>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <nav class="desktop-nav">
+            <ul class="nav-links" id="mobileMenu">
+                <li><a href="index.html" data-translate="home">Ana Sayfa</a></li>
+                <li><a href="#gamification" data-translate="game">Güvenlik Oyunu</a></li>
+                <li><a href="#password-meter" data-translate="password">Şifre Gücü</a></li>
+                <li><a href="#sql-injection" data-translate="sql">SQL Testi</a></li>
+                <li>
+                    <div class="language-switcher">
+                        <button onclick="setLanguage('tr')">TR</button>
+                        <button onclick="setLanguage('en')">EN</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Web Güvenliği Testleri ve Araçları</h1>
-      <p>Güvenliğinizi test edin, becerilerinizi geliştirin, puan ve rozet kazanın!</p>
+      <h1 data-translate="title">Web Güvenliği Testleri ve Araçları</h1>
+      <p data-translate="subtitle">Güvenliğinizi test edin, becerilerinizi geliştirin, puan ve rozet kazanın!</p>
     </div>
   </section>
 
   <section id="gamification" class="section">
-    <h2>Güvenlik Oyunu (Gamification)</h2>
+    <h2 data-translate="gameTitle">Güvenlik Oyunu</h2>
     <div style="text-align: center; margin-bottom: 1rem;">
-        <p><strong>Puanınız:</strong> <span id="userPoints">0</span></p>
+        <p><span data-translate="yourScore">Puanınız:</span> <span id="userPoints">0</span></p>
+        <div id="levelDisplay" style="margin: 0.5rem 0;"></div>
         <div id="badges" style="margin: 1rem 0;"></div>
     </div>
     
     <div style="max-width: 200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem;">
         <select id="difficulty" class="security-input">
-            <option value="easy">Kolay</option>
-            <option value="medium">Orta</option>
-            <option value="hard">Zor</option>
+            <option value="easy" data-translate="easy">Kolay</option>
+            <option value="medium" data-translate="medium">Orta</option>
+            <option value="hard" data-translate="hard">Zor</option>
         </select>
-        <button class="btn" onclick="startGame()" style="width: 100%;">Oyunu Başlat</button>
+        <button class="btn" id="startButton" onclick="startGame()" data-translate="startButton">Oyunu Başlat</button>
     </div>
     
     <div id="gameFeedback" style="text-align: center; margin-top: 1rem;"></div>
     <div id="education" style="background:#1a1a1a; padding:1rem; margin-top:1rem; border-radius:8px; display:none;"></div>
-</section>
+  </section>
+
+  <section id="statsPanel" class="section" style="background:#1a1a1a; border-radius:8px; padding:1rem; text-align:center;">
+    <h3 data-translate="stats">İstatistikler</h3>
+    <p><span data-translate="played">Oynanan:</span> <span id="statsPlayed">0</span></p>
+    <p><span data-translate="correct">Doğru:</span> <span id="statsCorrect">0</span></p>
+    <p><span data-translate="wrong">Yanlış:</span> <span id="statsWrong">0</span></p>
+    <p><span data-translate="best">En Yüksek Puan:</span> <span id="statsBest">0</span></p>
+  </section>
 
   <section id="password-meter" class="section">
-    <h2>Şifre Güç Göstergesi</h2>
+    <h2 data-translate="passwordTitle">Şifre Güç Göstergesi</h2>
     <div style="max-width: 600px; margin: 0 auto;">
-      <input type="password" id="passwordInput" placeholder="Şifrenizi yazın..." class="security-input">
+      <input type="password" id="passwordInput" data-translate-placeholder="passwordPlaceholder" class="security-input">
       <p id="passwordFeedback" style="margin-top: 1rem;"></p>
     </div>
   </section>
 
   <section id="sql-injection" class="section">
-    <h2>SQL Injection Simülasyonu</h2>
+    <h2 data-translate="sqlTitle">SQL Injection Simülasyonu</h2>
     <div style="max-width: 600px; margin: 0 auto; background:#1a1a1a; padding:1.5rem; border-radius:8px;">
-      <h3 style="margin-bottom:1rem;">Sahte Login Paneli</h3>
-      <input type="text" id="fakeUsername" placeholder="Kullanıcı Adı" class="security-input" style="margin-bottom:0.5rem;">
-      <input type="password" id="fakePassword" placeholder="Şifre" class="security-input">
+      <h3 style="margin-bottom:1rem;" data-translate="fakeLogin">Sahte Login Paneli</h3>
+      <input type="text" id="fakeUsername" data-translate-placeholder="usernamePlaceholder" class="security-input" style="margin-bottom:0.5rem;">
+      <input type="password" id="fakePassword" data-translate-placeholder="passwordPlaceholder" class="security-input">
       <div class="button-container" style="margin-top:1rem;">
-        <button class="btn" onclick="checkFakeLogin()">Giriş Yap</button>
+        <button class="btn" onclick="checkFakeLogin()" data-translate="loginButton">Giriş Yap</button>
       </div>
       <p id="fakeLoginResult" style="margin-top:1rem;"></p>
     </div>
   </section>
 
   <footer class="footer">
-    <p>&copy; 2025 Ege PARLAK. Tüm hakları saklıdır.</p>
+    <p>&copy; 2025 Ege PARLAK. <span data-translate="rights">Tüm hakları saklıdır.</span></p>
     <div class="socials">
       <a href="https://github.com/egnake" target="_blank">GitHub</a>
       <a href="https://twitter.com/egnake" target="_blank">Twitter</a>
@@ -102,6 +117,23 @@
       margin: 0.3rem;
       font-size: 0.9rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .language-switcher {
+      display: flex;
+      gap: 10px;
+      margin-left: auto;
+    }
+    .language-switcher button {
+      background: #333;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .language-switcher button:hover {
+      background: #444;
     }
   </style>
 </body>
