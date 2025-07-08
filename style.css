@@ -107,14 +107,6 @@ a {
         left: 0;
         right: 0;
         z-index: 999;
-            .about-image {
-        justify-self: center;
-        text-align: center;
-    }
-
-    .about-content {
-        text-align: center;
-    }
     }
 
     .desktop-nav ul.active {
@@ -261,14 +253,15 @@ a {
     gap: 1rem;
 }
 
+/* Mesaj Kutuları - Siyah ve Arayüzle Uyumluluk */
 .contact-form input,
 .contact-form textarea {
+    background-color: #333; /* Arayüzle uyumlu siyah renk */
+    border: 1px solid #444; /* Daha yumuşak kenarlık */
+    color: #fff; /* Beyaz yazı rengi */
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1); /* Hafif iç gölgeleme */
     padding: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    background-color: #1a1a1a;
-    color: #fff;
-    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
     transition: box-shadow 0.3s ease;
 }
 
@@ -278,6 +271,50 @@ a {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
+/* Badge Animasyonu */
+.badge {
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Eğitim Modülü */
+#education {
+    animation: fadeIn 0.5s ease;
+}
+
+/* SQL Simülasyon Paneli */
+#sql-injection {
+    transition: transform 0.3s ease;
+}
+#sql-injection:hover {
+    transform: translateY(-5px);
+}
+
+/* Button Container'ı Ortalamak */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%; /* Container genişliğini ayarlıyoruz */
+    flex-wrap: wrap; /* Butonlar çok uzun olursa, satırda kaymalarını sağlar */
+}
+
+/* Butonlar İçin Genişlik Ayarı */
+.button-container .btn {
+    padding: 1rem 2rem;
+    margin: 0;
+    width: auto;  /* Sabit genişlik olmaması için width: auto; */
+    max-width: 250px; /* Gerekirse, maksimum genişlik tanımlayabilirsiniz */
+    text-align: center; /* Eğer içerik içinde hizalamada sorun varsa */
+}
+
+    
 #formStatus {
     margin-top: 1rem;
     color: #0f0;
@@ -309,18 +346,15 @@ a {
 
 .profile-img {
     width: 100%;
-    max-width: 180px;
-    aspect-ratio: 1 / 1;         /* Daima kare kalır */
-    border-radius: 50%;
+    max-width: 250px;
+    height: auto;
     object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 2rem;
     border: 2px solid #ccc;
     box-shadow: 0 0 15px #000;
-    margin: 0 auto 2rem auto;     /* Ortalamak için */
-    display: block;               /* Resmi blok yapar */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-
 
 .profile-img:hover {
     transform: scale(1.05);
