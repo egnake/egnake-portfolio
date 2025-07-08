@@ -470,3 +470,27 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStats();
     showLeaderboard();
 });
+// Hamburger menüyü çalışır hale getirmek için:
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById('hamburger');
+    const desktopNav = document.querySelector('.desktop-nav');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (hamburger && desktopNav && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            desktopNav.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    hamburger.classList.remove('active');
+                    desktopNav.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
+});
