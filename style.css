@@ -300,8 +300,9 @@ a {
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    max-width: 180px;  /* İstersen bunu 150px, 200px vs. ayarlayabilirsin */
+    height: auto;  /* Bu önemli */
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 2rem;
@@ -309,6 +310,7 @@ a {
     box-shadow: 0 0 15px #000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .profile-img:hover {
     transform: scale(1.05);
