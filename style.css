@@ -107,6 +107,14 @@ a {
         left: 0;
         right: 0;
         z-index: 999;
+            .about-image {
+        justify-self: center;
+        text-align: center;
+    }
+
+    .about-content {
+        text-align: center;
+    }
     }
 
     .desktop-nav ul.active {
