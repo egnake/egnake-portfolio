@@ -301,15 +301,17 @@ a {
 
 .profile-img {
     width: 100%;
-    max-width: 180px;  /* İstersen bunu 150px, 200px vs. ayarlayabilirsin */
-    height: auto;  /* Bu önemli */
-    object-fit: cover;
+    max-width: 180px;
+    aspect-ratio: 1 / 1;         /* Daima kare kalır */
     border-radius: 50%;
-    margin-bottom: 2rem;
+    object-fit: cover;
     border: 2px solid #ccc;
     box-shadow: 0 0 15px #000;
+    margin: 0 auto 2rem auto;     /* Ortalamak için */
+    display: block;               /* Resmi blok yapar */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 
 .profile-img:hover {
