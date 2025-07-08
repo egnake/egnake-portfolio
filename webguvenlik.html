@@ -18,6 +18,7 @@
                 <li><a href="index.html" data-translate="home">Ana Sayfa</a></li>
                 <li><a href="#gamification" data-translate="game">Güvenlik Oyunu</a></li>
                 <li><a href="#password-meter" data-translate="password">Şifre Gücü</a></li>
+                <li><a href="#xss-tester" data-translate="xss">XSS Testi</a></li>
                 <li><a href="#sql-injection" data-translate="sql">SQL Testi</a></li>
                 <li>
                     <div class="language-switcher">
@@ -42,6 +43,7 @@
         <p><span data-translate="yourScore">Puanınız:</span> <span id="userPoints">0</span></p>
         <div id="levelDisplay" style="margin: 0.5rem 0;"></div>
         <div id="badges" style="margin: 1rem 0;"></div>
+        <div id="leaderboard" style="margin: 1rem 0; padding: 1rem; background: #1a1a1a; border-radius: 8px;"></div>
     </div>
     
     <div style="max-width: 200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem;">
@@ -51,6 +53,7 @@
             <option value="hard" data-translate="hard">Zor</option>
         </select>
         <button class="btn" id="startButton" onclick="startGame()" data-translate="startButton">Oyunu Başlat</button>
+        <button class="btn" id="timedButton" onclick="startTimedGame()" data-translate="timedButton">Zamanlı Mod</button>
     </div>
     
     <div id="gameFeedback" style="text-align: center; margin-top: 1rem;"></div>
@@ -63,6 +66,7 @@
     <p><span data-translate="correct">Doğru:</span> <span id="statsCorrect">0</span></p>
     <p><span data-translate="wrong">Yanlış:</span> <span id="statsWrong">0</span></p>
     <p><span data-translate="best">En Yüksek Puan:</span> <span id="statsBest">0</span></p>
+    <p><span data-translate="time">Kalan Süre:</span> <span id="timerDisplay">30</span>s</p>
   </section>
 
   <section id="password-meter" class="section">
@@ -70,6 +74,25 @@
     <div style="max-width: 600px; margin: 0 auto;">
       <input type="password" id="passwordInput" data-translate-placeholder="passwordPlaceholder" class="security-input">
       <p id="passwordFeedback" style="margin-top: 1rem;"></p>
+    </div>
+  </section>
+
+  <section id="xss-tester" class="section">
+    <h2 data-translate="xssTitle">XSS Test Aracı</h2>
+    <div style="max-width: 600px; margin: 0 auto;">
+        <textarea id="xssInput" class="security-input" placeholder="XSS payloadınızı girin..." rows="4"></textarea>
+        <button class="btn" onclick="testXSS()" data-translate="testButton">Test Et</button>
+        <div id="xssResult" style="margin-top: 1rem; padding: 1rem; border-radius: 8px;"></div>
+        <div id="xssEducation" style="background:#1a1a1a; padding:1rem; margin-top:1rem; border-radius:8px; display:none;"></div>
+    </div>
+  </section>
+
+  <section id="header-analyzer" class="section">
+    <h2 data-translate="headerTitle">HTTP Header Analiz</h2>
+    <div style="max-width: 600px; margin: 0 auto;">
+        <input type="url" id="headerUrl" class="security-input" placeholder="URL girin (örn: https://example.com)">
+        <button class="btn" onclick="analyzeHeaders()" data-translate="analyzeButton">Analiz Et</button>
+        <pre id="headerResults" style="background:#1a1a1a; padding:1rem; margin-top:1rem; border-radius:8px; overflow-x:auto;"></pre>
     </div>
   </section>
 
@@ -83,6 +106,39 @@
         <button class="btn" onclick="checkFakeLogin()" data-translate="loginButton">Giriş Yap</button>
       </div>
       <p id="fakeLoginResult" style="margin-top:1rem;"></p>
+    </div>
+  </section>
+
+  <section id="education-section" class="section">
+    <h2 data-translate="eduTitle">Eğitim Kaynakları</h2>
+    <div class="edu-tabs">
+        <button class="edu-tab active" onclick="openEduTab('xss')" data-translate="xssTab">XSS</button>
+        <button class="edu-tab" onclick="openEduTab('sql')" data-translate="sqlTab">SQL Injection</button>
+        <button class="edu-tab" onclick="openEduTab('csrf')" data-translate="csrfTab">CSRF</button>
+    </div>
+    
+    <div id="xss-edu" class="edu-content active">
+        <h3>XSS Nedir?</h3>
+        <p>Cross-Site Scripting (XSS), saldırganların web sayfalarına kötü amaçlı scriptler enjekte etmesine olanak tanıyan bir güvenlik açığıdır.</p>
+        <div class="video-container">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/X8v1GWzYJqw" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+    
+    <div id="sql-edu" class="edu-content">
+        <h3>SQL Injection Nedir?</h3>
+        <p>SQL Injection, veritabanı sorgularını manipüle ederek yetkisiz veri erişimi sağlayan bir saldırı türüdür.</p>
+        <div class="video-container">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/ciNHn38EyRc" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+    
+    <div id="csrf-edu" class="edu-content">
+        <h3>CSRF Nedir?</h3>
+        <p>Cross-Site Request Forgery (CSRF), kullanıcının kimliğine bürünerek yetkili işlemler yapmayı amaçlayan bir saldırıdır.</p>
+        <div class="video-container">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/vRBihr41JTo" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        </div>
     </div>
   </section>
 
@@ -134,6 +190,46 @@
     }
     .language-switcher button:hover {
       background: #444;
+    }
+    .edu-tabs {
+      display: flex;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #444;
+    }
+    .edu-tab {
+      padding: 0.5rem 1rem;
+      background: #333;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      border-radius: 5px 5px 0 0;
+    }
+    .edu-tab.active {
+      background: #555;
+    }
+    .edu-content {
+      display: none;
+      padding: 1rem;
+      background: #1a1a1a;
+      border-radius: 0 0 8px 8px;
+    }
+    .edu-content.active {
+      display: block;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   </style>
 </body>
