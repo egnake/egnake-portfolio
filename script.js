@@ -100,7 +100,11 @@ function checkSecurity() {
     const result = document.getElementById('securityResult');
     
     const xssPattern = /<\s*script.*?>.*?<\s*\/\s*script\s*>/i;
-    const sqlPatterns = [/(\bor\b|\band\b)\s+\d+=\d+/i, /('|--|\/\*|\*\/|;)/i];
+const sqlPatterns = [
+   /(\bor\b|\band\b)\s+\d+=\d+/i,
+   /('|--|\/\*|\*\/|;|--|\bselect\b|\binsert\b|\bupdate\b|\bdrop\b)/i
+];
+
 
     let isXSS = xssPattern.test(input);
     let isSQLi = sqlPatterns.some(pattern => pattern.test(input));
