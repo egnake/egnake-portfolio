@@ -3,12 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (hamburger && mobileMenu) {
-        // Hamburger menü kontrolü
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
-        
+
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -16,12 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     hamburger.classList.remove('active');
                 }
             });
-        });        
+        });
     }
 
-    // Scroll Animasyonları
     const sections = document.querySelectorAll(".section");
-
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -38,10 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(section);
     });
 
-    // GitHub Projeleri Yükleme
     function loadGitHubRepos() {
         const container = document.getElementById('githubProjects');
-        fetch('https://api.github.com/users/egnake/repos ')
+        fetch('https://api.github.com/users/egnake/repos')
             .then(res => res.json())
             .then(repos => {
                 container.innerHTML = '';
@@ -68,16 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadGitHubRepos();
 
-    // EmailJS Ayarları
     (function () {
-        emailjs.init("akystYw1ebv8iwdiZ"); // Buraya User ID'ni yaz
+        emailjs.init("akystYw1ebv8iwdiZ");
     })();
 
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-
             const btn = this.querySelector('button');
             const status = document.getElementById('formStatus');
             btn.disabled = true;
@@ -99,3 +93,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// Web Güvenlik Kontrolü
+function checkSecurity() {
+    const input = document.getElementById('securityInput').value.toLowerCase();
+    const result = document.getElementById('securityResult');
+    
+    const xssPattern = /<\s*script.*?>.*?<\s*\/\s*script\s*>/i;
+    const sqlPatterns = [/(\bor\b|\band\b)\s+\d+=\d+/i, /('|--|\/\*|\*\/|;)/i];
+
+    let isXSS = xssPattern.test(input);
+    let isSQLi = sqlPatterns.some(pattern => pattern.test(input));
+
+    if (isXSS && isSQLi) {
+        result.style.color = 'red';
+        result.textContent = "⚠️ XSS ve SQL Injection açıkları tespit edildi!";
+    } else if (isXSS) {
+        result.style.color = 'orange';
+        result.textContent = "⚠️ XSS açığı tespit edildi!";
+    } else if (isSQLi) {
+        result.style.color = 'orange';
+        result.textContent = "⚠️ SQL Injection açığı tespit edildi!";
+    } else {
+        result.style.color = 'lightgreen';
+        result.textContent = "✅ Herhangi bir güvenlik açığı tespit edilmedi.";
+    }
+}
